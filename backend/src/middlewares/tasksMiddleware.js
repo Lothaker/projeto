@@ -1,32 +1,26 @@
-const validateBody = (req, res, next) => {
-    const { body }  = req;
-
-    if (body.title == undefined) {
-        return res.status(400).json({ message: "O campo 'title' é obrigatório" });
-    }
-
-    if (body.title == "") {
-        return res.status(400).json({ message: "O campo 'title' é obrigatório" });
-    }
-
-    next();
+const validateCurrency = (req, res, next) => {
+  const { name, type } = req.body;
+  if (!name || name == "") {
+    return res.status(400).json({ message: "O campo 'name' é obrigatório" });
+  }
+  if (!type || type == "") {
+    return res.status(400).json({ message: "O campo 'type' é obrigatório" });
+  }
+  next();
 };
 
-const validateStaus = async (req, res, next) => {
-    const { body }  = req;
-
-    if (body.status == undefined) {
-        return res.status(400).json({ message: "O campo 'status' é obrigatório" });
-    }
-
-    if (body.status == "") {
-        return res.status(400).json({ message: "O campo 'status' é obrigatório" });
-    }
-
-    next();
-}
+const validateInvestor = (req, res, next) => {
+  const { name, email } = req.body;
+  if (!name || name == "") {
+    return res.status(400).json({ message: "O campo 'name' é obrigatório" });
+  }
+  if (!email || email == "") {
+    return res.status(400).json({ message: "O campo 'email' é obrigatório" });
+  }
+  next();
+};
 
 module.exports = {
-validateBody,
-validateStaus
+  validateCurrency,
+  validateInvestor
 };
